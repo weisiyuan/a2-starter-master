@@ -1,0 +1,62 @@
+# create your Kivy layout in the kv language here
+BoxLayout:
+    orientation: 'horizontal'
+
+    GridLayout:
+        id: buttons
+        cols: 1
+        size_hint_x: 0.3
+
+        Button:
+            text: 'List Required'
+            id: showRequire
+            on_press: app.create_book_buttons('r')
+        Button:
+            text: 'List Completed'
+            id: showComplete
+            on_press: app.create_book_buttons('c')
+        Label:
+            text: 'Add New Book...'
+        Label:
+            text: 'Title:'
+        TextInput:
+            id: title
+            multiline: False
+            write_tab: False
+        Label:
+            text: 'Author:'
+        TextInput:
+            id: author
+            multiline: False
+            write_tab: False
+        Label:
+            text: 'Pages:'
+        TextInput:
+            id: page
+            multiline: False
+            write_tab: False
+        Button:
+            text: 'Add Item'
+            on_press: app.press_add()
+        Button:
+            text: 'Clear'
+            on_press: app.press_clear()
+
+
+    GridLayout:
+        cols: 1
+        rows: 3
+        id: view
+        Label:
+            size_hint_y: 0.1
+            id: header_status
+            text: ''
+
+        GridLayout:
+            cols:1
+            id:listview
+
+        Label:
+            size_hint_y: 0.1
+            id: footer_status
+            text: 'click books to mark them as completed'
